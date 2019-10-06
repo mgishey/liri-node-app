@@ -38,14 +38,29 @@ switch (command) {
 */
 
 function concertThis() {
-  axios.get("https://rest.bandsintown.com/artists/" + option + "/events?app_id=codingbootcamp").then(
-    function (response) {
-      console.log(response.data[0]);
+  if (!option) {
+    console.log("Enter a band or artist");
+  } else {
+    axios.get("https://rest.bandsintown.com/artists/" + option + "/events?app_id=codingbootcamp").then(
+      function (response) {
+        console.log("**** Upcoming Concerts for " + option + " ****");
+        var cr = response.data;
+        for (i = 0; i < cr.length; i++) {
+          console.log((i + 1) + ":");
+          console.log("Venue: " + cr[i].venue.name);
+          console.log("City: " + cr[i].venue.city + ", " + cr[i].venue.country);
+          var dateStr = cr[i].datetime.slice(0, 10);
+          dateArr = dateStr.split("-");
+          console.log("Date: " + dateArr[1] + "-" + dateArr[2] + "-" + dateArr[0]);
+          console.log("---------------------");
+        }
+        console.log("\n\n");
 
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 }
 
 function spotifySong() {
