@@ -48,13 +48,18 @@ function doWhatItSays() {
     }
 
     // We will then print the contents of data
-    console.log(data);
+    //console.log(data);
 
     // Then split it by commas (to make it more readable)
-    var dataArr = data.split(", ");
+    var dataArr = data.split(",");
 
     // We will then re-display the content as an array for later use.
-    console.log(dataArr);
+    //console.log(dataArr);
+    option = dataArr[1];
+    option = option.replace(/"/g,"");
+
+    //console.log("option: " + option);
+    spotifySong();
   });
 }
 
@@ -85,7 +90,7 @@ function concertThis() {
 }
 
 function spotifySong() {
-
+  
   if (!option) {
     option = "The Sign";
     artist = "Ace of Base";
@@ -96,12 +101,14 @@ function spotifySong() {
     }
     // variable for root of search
     var rs = data.tracks.items[0];
+
+    /*
     //console.log(rs);
     console.log("Artist(s): " + rs.artists[0].name);
     console.log("Song: " + rs.name);
     console.log("Preview URL: " + rs.preview_url);
     console.log("Album: " + rs.album.name);
-
+    */
   });
 }
 
