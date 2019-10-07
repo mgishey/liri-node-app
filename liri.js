@@ -21,11 +21,12 @@ switch (command) {
   case "do-what-it-says":
     doWhatItSays();
     break;
-  default: console.log("\n" + "liri.js" + " <command>" + "\n" +
-    "<spotify-this-song>" + " song" + "\n" +
-    "<concert-this>" + " concert" + "\n" +
-    "<movie-this>" + " movie" + "\n" +
-    "<do-what-it-says>" + "\n\n");
+  default: console.log("USAGE:")
+    console.log("\n" + "liri.js" + " <command>" + "\n" +
+      "<spotify-this-song>" + " song" + "\n" +
+      "<concert-this>" + " concert" + "\n" +
+      "<movie-this>" + " movie" + "\n" +
+      "<do-what-it-says>" + "\n\n");
 }
 
 
@@ -95,6 +96,8 @@ function spotifySong() {
 function movieThis() {
   if (!option) {
     option = "Mr. Nobody";
+    console.log("***If you haven't watched 'Mr. Nobody', then you should: <http://www.imdb.com/title/tt0485947>");
+    console.log("It's on Netlix!***" + "\n");
   }
   axios.get("http://www.omdbapi.com/?t=" + option + "&y=&plot=short&apikey=trilogy").then(
     function (response) {
