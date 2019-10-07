@@ -12,6 +12,14 @@ The `commands` used are:
 * `movie-this`
 * `do-what-it says`
 
+
+`Command` | Parameter
+----------------------
+`concert-this` | band or artist
+--------------------------------
+`spotify-this-song` | song
+
+
 ### Step by Step Instructions
 Check out the screen shot below:
 
