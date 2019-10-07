@@ -59,6 +59,7 @@ function concertThis() {
           console.log("Date: " + dateArr[1] + "-" + dateArr[2] + "-" + dateArr[0]);
           console.log("---------------------");
         }
+        console.log("*** " + i + " " + option + " concerts found ***");
         console.log("\n\n");
       })
       .catch(function (error) {
