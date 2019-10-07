@@ -24,7 +24,7 @@ The `commands` are:
 
     `node liri.js concert-this "band or artist"`
 
-    Output: A list of all the dates and locations for a particular band/artist is generated. The lists vary in size for each each band/artist.
+    Output: A list of all the dates and locations for a particular band/artist is generated. The lists vary in size for each band/artist.
 
     ![concert-this](/images/concert-this.png)
 

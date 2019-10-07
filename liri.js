@@ -1,5 +1,7 @@
-// Set up Enviroment for spotify
+// Set up Enviroment
 require("dotenv").config();
+
+// Variables
 var fs = require("fs");
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
@@ -8,6 +10,7 @@ var command = process.argv[2];
 var option = process.argv[3];
 const axios = require("axios");
 
+// Swith statement to determine which function to run
 switch (command) {
   case "spotify-this-song":
     spotifySong();
@@ -30,7 +33,7 @@ switch (command) {
 }
 
 
-
+// Function to read the random.txt file for commands and arguments
 function doWhatItSays() {
   fs.readFile("random.txt", "utf8", function (error, data) {
     if (error) {
@@ -43,6 +46,7 @@ function doWhatItSays() {
   });
 }
 
+// Function to list concerts for a particular band/artist
 function concertThis() {
   if (!option) {
     console.log("Enter a band or artist");
@@ -69,8 +73,8 @@ function concertThis() {
   }
 }
 
+// Function to list information for a certain song
 function spotifySong() {
-
   if (!option) {
     option = "The Sign";
     artist = "Ace of Base";
