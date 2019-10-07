@@ -28,37 +28,16 @@ switch (command) {
     "<do-what-it-says>" + "\n\n");
 }
 
-/*
-4. `node liri.js do-what-it-says`
 
-  * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-
-  * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
-
-  * Edit the text in random.txt to test out the feature for movie-this and concert-this.
-*/
 
 function doWhatItSays() {
-
   fs.readFile("random.txt", "utf8", function (error, data) {
-
-    // If the code experiences any errors it will log the error to the console.
     if (error) {
       return console.log(error);
     }
-
-    // We will then print the contents of data
-    //console.log(data);
-
-    // Then split it by commas (to make it more readable)
     var dataArr = data.split(",");
-
-    // We will then re-display the content as an array for later use.
-    //console.log(dataArr);
     option = dataArr[1];
-    option = option.replace(/"/g,"");
-
-    //console.log("option: " + option);
+    option = option.replace(/"/g, "");
     spotifySong();
   });
 }
@@ -81,7 +60,6 @@ function concertThis() {
           console.log("---------------------");
         }
         console.log("\n\n");
-
       })
       .catch(function (error) {
         console.log(error);
@@ -90,25 +68,26 @@ function concertThis() {
 }
 
 function spotifySong() {
-  
+
   if (!option) {
     option = "The Sign";
     artist = "Ace of Base";
   }
-  spotify.search({ type: 'track', query: option, limit: 1 }, function (err, data) {
+  spotify.search({ type: 'track', query: option, limit: 10 }, function (err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-    // variable for root of search
-    var rs = data.tracks.items[0];
-
-    /*
-    //console.log(rs);
-    console.log("Artist(s): " + rs.artists[0].name);
-    console.log("Song: " + rs.name);
-    console.log("Preview URL: " + rs.preview_url);
-    console.log("Album: " + rs.album.name);
-    */
+    var rs = data.tracks.items;
+    console.log("**** Displaying results for " + option + "****");
+    console.log("length: " + rs.length);
+    for (i = 0; i < rs.length; i++) {
+      console.log((i + 1) + ":");
+      console.log("Artist(s): " + rs[i].artists[0].name);
+      console.log("Song: " + rs[i].name);
+      console.log("Preview URL: " + rs[i].preview_url);
+      console.log("Album: " + rs[i].album.name);
+      console.log("--------------")
+    }
   });
 }
 
@@ -118,9 +97,7 @@ function movieThis() {
   }
   axios.get("http://www.omdbapi.com/?t=" + option + "&y=&plot=short&apikey=trilogy").then(
     function (response) {
-      // assign data root
       var mr = response.data;
-      //  log out relevant data
       console.log("Title: " + mr.Title);
       console.log("Rating: " + mr.imdbRating);
       console.log("Rotten Tomatoes Rating: " + mr.Ratings[1].Value);
@@ -133,6 +110,3 @@ function movieThis() {
       console.log(error);
     });
 }
-
-
-console.log("Hello??");
