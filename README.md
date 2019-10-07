@@ -19,8 +19,11 @@ The `commands` are:
 1. Open a terminal 
 2. Navigate to the folder containg the file named `liri.js`.
 3. Output will vary depending on the command run.
-    **Example 1:** To get concert information type:
+
+     * **Example 1:** To get concert information type:
+
     `node liri.js concert-this "band or artist"`
+    
     Output: A list of all the dates and locations for a particular band/artist is generated. The lists vary in size for each each band/artist.
 
     ![concert-this w/band](/images/concert-this-band.png)
