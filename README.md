@@ -16,7 +16,6 @@ The `commands` used are:
 `Command` | Parameter
 ----------------------
 `concert-this` | band or artist
---------------------------------
 `spotify-this-song` | song
 
 
